@@ -1,4 +1,4 @@
-package spoons;
+package SpoonsProj;
 
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
@@ -29,6 +29,7 @@ public class PlayerGui extends JFrame {
 		frame.setTitle("Spoons");
 		frame.setSize(700,470);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	public PlayerGui() {
@@ -72,7 +73,8 @@ public class PlayerGui extends JFrame {
 		panel_2.add(lblClickASpoon);
 		
 		JButton spoon1 = new JButton("");
-		spoon1.setIcon(new ImageIcon("X:\\workspace\\GUI\\TheSpoon.jpg"));
+		ImageIcon spoonPic = new ImageIcon("photo.jpg"); //this is where you have your spoon picture location
+		spoon1.setIcon(spoonPic);
 		spoon1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -83,7 +85,7 @@ public class PlayerGui extends JFrame {
 		spoonPanel.add(spoon1);
 		
 		JButton spoon2 = new JButton("");
-		spoon2.setIcon(new ImageIcon("X:\\workspace\\GUI\\TheSpoon.jpg"));
+		spoon2.setIcon(spoonPic);
 		spoon2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -94,7 +96,7 @@ public class PlayerGui extends JFrame {
 		spoonPanel.add(spoon2);
 		
 		JButton spoon3 = new JButton("");
-		spoon3.setIcon(new ImageIcon("X:\\workspace\\GUI\\TheSpoon.jpg"));
+		spoon3.setIcon(spoonPic);
 		spoon3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -105,7 +107,7 @@ public class PlayerGui extends JFrame {
 		spoonPanel.add(spoon3);
 		
 		JButton spoon4 = new JButton("");
-		spoon4.setIcon(new ImageIcon("X:\\workspace\\GUI\\TheSpoon.jpg"));
+		spoon4.setIcon(spoonPic);
 		spoon4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
