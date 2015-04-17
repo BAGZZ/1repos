@@ -1,0 +1,31 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+
+
+public class Player {
+
+	public Socket ps;
+	public static final int PORT = 6000;
+	public static void main(String[] args){
+		Player p = new Player();
+		try{
+			p.ps = new Socket("127.0.0.1",PORT);
+//			Thread.sleep(200);
+			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(p.ps.getOutputStream()));
+			out.write("5 ♠");
+			out.flush();
+			
+//			Thread.sleep(5000);
+			p.ps.close();
+		}
+		catch(IOException ioe){
+			System.err.println(ioe.getMessage());
+		}
+//		catch(InterruptedException ie)
+//		{
+//			ie.printStackTrace();
+//		}
+	}
+}
