@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 
-public class FrameTry extends JFrame {
+public class PlayerGui extends JFrame {
   //the 5 cards displayed as buttons
   JButton card1 = new JButton("Card 1");
   JButton card2 = new JButton("Card 2");
@@ -37,14 +37,14 @@ public class FrameTry extends JFrame {
   ImageIcon spoonPic = new ImageIcon("photo.jpg"); 
   
   public static void main(String[] args) {
-    FrameTry frame = new FrameTry();
+	PlayerGui frame = new PlayerGui();
     frame.setVisible(true);
     frame.setTitle("Spoons");
     frame.setSize(700,470);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
   private final ButtonGroup buttonGroup = new ButtonGroup();
-  public FrameTry() {
+  public PlayerGui() {
     
     JPanel cardPanel = new JPanel();
     
