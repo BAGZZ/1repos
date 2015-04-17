@@ -1,0 +1,70 @@
+import java.io.*;
+import java.net.Socket;
+
+
+public class Client implements Runnable {
+	private Socket skt;
+	private BufferedReader bReader;
+	private BufferedWriter bWriter;
+	
+	
+	
+	public Client(Socket skt){
+		this.skt = skt;
+		
+		try
+		{
+			bReader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+			bWriter = new BufferedWriter(new OutputStreamWriter(skt.getOutputStream()));
+		}
+		catch(IOException ioe){
+			System.err.println("Error Setting Up Client");
+		}
+		
+		new Thread(this).start();
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println("client running");
+		while(skt.isConnected()){
+			//process net traffic
+		
+			try
+			{
+				if(skt.getInputStream().available() > 0){
+					//read in line
+					String line = bReader.readLine();
+					System.out.println(line);
+				}
+			}
+			catch(IOException ioe){
+				ioe.printStackTrace();
+			}
+			try
+			{
+				Thread.sleep(100);
+			}
+			catch(InterruptedException ie)
+			{
+				ie.printStackTrace();
+			}
+		}
+		
+		System.out.println("Client Stopped");
+	}
+	
+	public void sendMessage(String message)
+	{
+		try
+		{
+			bWriter.write(message);
+			bWriter.flush();
+		}
+		catch(IOException ioe){
+			//throw error crap
+		}
+	}
+
+}
