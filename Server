@@ -1,0 +1,34 @@
+package Server;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+
+public class Server implements Runnable {	
+	public static void main(String[] args){
+		new Thread (new Server()).start();
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try{
+			int port = 6000;
+			ServerSocket serverSocket = new ServerSocket(6000);
+			System.out.println("Server is listening to port 6000");
+			
+			//server always running.
+			while(true){
+				System.out.println("Server Accepting Connections");
+				Socket socket;
+				socket = serverSocket.accept();
+				System.out.println("Server Accepted Connection from " + socket.getInetAddress().toString());
+				new Client(socket);				
+			}	
+		}
+		catch(IOException ioe){
+			System.err.println(ioe.getMessage());
+		}
+	}
+}
