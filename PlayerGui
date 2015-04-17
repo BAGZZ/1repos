@@ -1,5 +1,3 @@
-package SpoonsProj;
-
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import java.awt.BorderLayout;
@@ -21,155 +19,174 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 
-public class PlayerGui extends JFrame {
-	
-	public static void main(String[] args) {
-		PlayerGui frame = new PlayerGui();
-		frame.setVisible(true);
-		frame.setTitle("Spoons");
-		frame.setSize(700,470);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-	}
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	public PlayerGui() {
-		
-		JPanel cardPanel = new JPanel();
-		
-		JPanel spoonPanel = new JPanel();
-		
-		JPanel panel_2 = new JPanel();
-		
-		JPanel panel_3 = new JPanel();
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-					.addContainerGap())
-				.addComponent(cardPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-					.addGap(33)
-					.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(cardPanel, GroupLayout.PREFERRED_SIZE, 217, Short.MAX_VALUE)
-					.addGap(3))
-		);
-		
-		JLabel lblClickOnThe = new JLabel("Click On The Card You Wish To Discard");
-		lblClickOnThe.setHorizontalAlignment(SwingConstants.CENTER);
-		lblClickOnThe.setHorizontalTextPosition(SwingConstants.CENTER);
-		panel_3.add(lblClickOnThe);
-		
-		JLabel lblClickASpoon = new JLabel("Click A Spoon When You Have A Four Of A Kind");
-		panel_2.add(lblClickASpoon);
-		
-		JButton spoon1 = new JButton("");
-		ImageIcon spoonPic = new ImageIcon("photo.jpg"); //this is where you have your spoon picture location
-		spoon1.setIcon(spoonPic);
-		spoon1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		spoon1.setPreferredSize(new Dimension(125, 60));
-		spoon1.setHorizontalTextPosition(SwingConstants.CENTER);
-		spoon1.setAlignmentX(0.5f);
-		spoonPanel.add(spoon1);
-		
-		JButton spoon2 = new JButton("");
-		spoon2.setIcon(spoonPic);
-		spoon2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		spoon2.setPreferredSize(new Dimension(125, 60));
-		spoon2.setHorizontalTextPosition(SwingConstants.CENTER);
-		spoon2.setAlignmentX(0.5f);
-		spoonPanel.add(spoon2);
-		
-		JButton spoon3 = new JButton("");
-		spoon3.setIcon(spoonPic);
-		spoon3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		spoon3.setPreferredSize(new Dimension(125, 60));
-		spoon3.setHorizontalTextPosition(SwingConstants.CENTER);
-		spoon3.setAlignmentX(0.5f);
-		spoonPanel.add(spoon3);
-		
-		JButton spoon4 = new JButton("");
-		spoon4.setIcon(spoonPic);
-		spoon4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		spoon4.setAlignmentX(Component.CENTER_ALIGNMENT);
-		spoon4.setHorizontalTextPosition(SwingConstants.CENTER);
-		spoon4.setPreferredSize(new Dimension(125, 60));
-		spoonPanel.add(spoon4);
-		
-		JButton card1 = new JButton("Card 1");
-		card1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		card1.setPreferredSize(new Dimension(125, 200));
-		card1.setMinimumSize(new Dimension(100, 400));
-		card1.setMaximumSize(new Dimension(100, 400));
-		cardPanel.add(card1);
-		
-		JButton card2 = new JButton("Card 2");
-		card2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		card2.setPreferredSize(new Dimension(125, 200));
-		card2.setMinimumSize(new Dimension(100, 400));
-		card2.setMaximumSize(new Dimension(100, 400));
-		cardPanel.add(card2);
-		
-		JButton card3 = new JButton("Card 3");
-		card3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		card3.setPreferredSize(new Dimension(125, 200));
-		card3.setMinimumSize(new Dimension(100, 400));
-		card3.setMaximumSize(new Dimension(100, 400));
-		cardPanel.add(card3);
-		
-		JButton card4 = new JButton("Card 4");
-		card4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		card4.setPreferredSize(new Dimension(125, 200));
-		card4.setMinimumSize(new Dimension(100, 400));
-		card4.setMaximumSize(new Dimension(100, 400));
-		cardPanel.add(card4);
-		
-		JButton card5 = new JButton("Card 5");
-		card5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		card5.setPreferredSize(new Dimension(125, 200));
-		card5.setMinimumSize(new Dimension(100, 400));
-		card5.setMaximumSize(new Dimension(100, 400));
-		cardPanel.add(card5);
-		getContentPane().setLayout(groupLayout);
-	}
+public class FrameTry extends JFrame {
+  //the 5 cards displayed as buttons
+  JButton card1 = new JButton("Card 1");
+  JButton card2 = new JButton("Card 2");
+  JButton card3 = new JButton("Card 3");
+  JButton card4 = new JButton("Card 4");
+  JButton card5 = new JButton("Card 5");
+  
+  //our 4 spoons displayed as buttons
+  JButton spoon1 = new JButton("");
+  JButton spoon2 = new JButton("");
+  JButton spoon3 = new JButton("");
+  JButton spoon4 = new JButton("");
+  
+  //the spoon picture in JRE System Library
+  ImageIcon spoonPic = new ImageIcon("photo.jpg"); 
+  
+  public static void main(String[] args) {
+    FrameTry frame = new FrameTry();
+    frame.setVisible(true);
+    frame.setTitle("Spoons");
+    frame.setSize(700,470);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  }
+  private final ButtonGroup buttonGroup = new ButtonGroup();
+  public FrameTry() {
+    
+    JPanel cardPanel = new JPanel();
+    
+    JPanel spoonPanel = new JPanel();
+    
+    JPanel panel_2 = new JPanel();
+    
+    JPanel panel_3 = new JPanel();
+    GroupLayout groupLayout = new GroupLayout(getContentPane());
+    groupLayout.setHorizontalGroup(
+      groupLayout.createParallelGroup(Alignment.LEADING)
+        .addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+        .addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+        .addGroup(groupLayout.createSequentialGroup()
+          .addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+          .addContainerGap())
+        .addComponent(cardPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+    );
+    groupLayout.setVerticalGroup(
+      groupLayout.createParallelGroup(Alignment.LEADING)
+        .addGroup(groupLayout.createSequentialGroup()
+          .addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+          .addGap(33)
+          .addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addComponent(cardPanel, GroupLayout.PREFERRED_SIZE, 217, Short.MAX_VALUE)
+          .addGap(3))
+    );
+    
+    JLabel lblClickOnThe = new JLabel("Click On The Card You Wish To Discard");
+    lblClickOnThe.setHorizontalAlignment(SwingConstants.CENTER);
+    lblClickOnThe.setHorizontalTextPosition(SwingConstants.CENTER);
+    panel_3.add(lblClickOnThe);
+    
+    JLabel lblClickASpoon = new JLabel("Click A Spoon When You Have A Four Of A Kind");
+    panel_2.add(lblClickASpoon);
+    
+    //SPOON1
+    spoon1.setIcon(spoonPic);
+    spoon1.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+      }
+    });
+    spoon1.setPreferredSize(new Dimension(125, 60));
+    spoon1.setHorizontalTextPosition(SwingConstants.CENTER);
+    spoon1.setAlignmentX(0.5f);
+    spoonPanel.add(spoon1);
+    
+    //SPOON2
+    spoon2.setIcon(spoonPic);
+    spoon2.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+      }
+    });
+    spoon2.setPreferredSize(new Dimension(125, 60));
+    spoon2.setHorizontalTextPosition(SwingConstants.CENTER);
+    spoon2.setAlignmentX(0.5f);
+    spoonPanel.add(spoon2);
+    
+    //SPOON3
+    spoon3.setIcon(spoonPic);
+    spoon3.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+      }
+    });
+    spoon3.setPreferredSize(new Dimension(125, 60));
+    spoon3.setHorizontalTextPosition(SwingConstants.CENTER);
+    spoon3.setAlignmentX(0.5f);
+    spoonPanel.add(spoon3);
+    
+    //SPOON4
+    spoon4.setIcon(spoonPic);
+    spoon4.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+      }
+    });
+    spoon4.setAlignmentX(Component.CENTER_ALIGNMENT);
+    spoon4.setHorizontalTextPosition(SwingConstants.CENTER);
+    spoon4.setPreferredSize(new Dimension(125, 60));
+    spoonPanel.add(spoon4);
+    
+    //CARD1
+    card1.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e){
+        card1.setText("ace ♠");
+      }
+    });
+    card1.setPreferredSize(new Dimension(125, 200));
+    card1.setMinimumSize(new Dimension(100, 400));
+    card1.setMaximumSize(new Dimension(100, 400));
+    cardPanel.add(card1);
+    
+    
+    //CARD2
+    card2.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+      card2.setText("ace ♥");
+      }
+    });
+    card2.setPreferredSize(new Dimension(125, 200));
+    card2.setMinimumSize(new Dimension(100, 400));
+    card2.setMaximumSize(new Dimension(100, 400));
+    cardPanel.add(card2);
+    
+    //CARD3
+    card3.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        card3.setText("ace ♣");
+      }
+    });
+    card3.setPreferredSize(new Dimension(125, 200));
+    card3.setMinimumSize(new Dimension(100, 400));
+    card3.setMaximumSize(new Dimension(100, 400));
+    cardPanel.add(card3);
+    
+    //CARD4
+    card4.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        card4.setText("ace ♦");
+      }
+    });
+    card4.setPreferredSize(new Dimension(125, 200));
+    card4.setMinimumSize(new Dimension(100, 400));
+    card4.setMaximumSize(new Dimension(100, 400));
+    cardPanel.add(card4);
+    
+    //CARD5
+    card5.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        card5.setText("2 ♦");
+      }
+    });
+    card5.setPreferredSize(new Dimension(125, 200));
+    card5.setMinimumSize(new Dimension(100, 400));
+    card5.setMaximumSize(new Dimension(100, 400));
+    cardPanel.add(card5);
+    getContentPane().setLayout(groupLayout);
+  }
 
-	private class HandleButtons {
+  private class HandleButtons {
 
-	}
+  }
 }
