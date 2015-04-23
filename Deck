@@ -1,0 +1,12 @@
+package SpoonsProj;
+
+
+public class Deck {
+	public static void main(String[] args){
+		DeckOfCards Deck1 = new DeckOfCards();
+		Deck1.shuffle();
+		System.out.println(Deck1.toString());
+	}
+	
+	
+}
