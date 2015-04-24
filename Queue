@@ -1,0 +1,39 @@
+public class Queue {
+	
+	public static void main(String[] args){
+		Card a = new Card(3,1);
+		Card b = new Card(4,1);
+		Card c = new Card(7,1);
+		Card d = new Card(9,1);
+		Card e = new Card(12,1);
+		
+		Queue q = new Queue();
+		q.addCard(a);
+		q.addCard(b);
+		q.addCard(c);
+		q.addCard(d);
+		q.addCard(e);
+		
+		System.out.println(q.removeCard());
+		System.out.println(q.removeCard());
+		System.out.println(q.removeCard());
+		System.out.println(q.removeCard());
+		System.out.println(q.removeCard());
+		
+	}
+Card[] bufferedQueue = new Card[30];
+	int head = 0;
+	int tail = 0;
+	public Queue(){
+
+	}
+	void addCard(Card card){
+		bufferedQueue[tail] = card ;
+		tail=(++tail)%bufferedQueue.length;
+	}
+	public Card removeCard(){
+		int tempHead = head;
+		head=(++head)%bufferedQueue.length;
+		return bufferedQueue[tempHead];
+	}
+}
