@@ -1,18 +1,12 @@
 import javax.swing.JFrame;
-import javax.swing.JSplitPane;
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.ButtonGroup;
-import java.awt.FlowLayout;
-import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dimension;
 import javax.swing.SwingConstants;
 import java.awt.Component;
-import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,6 +27,12 @@ public class PlayerGui extends JFrame {
   JButton spoon3 = new JButton("");
   JButton spoon4 = new JButton("");
   
+  Player player;
+  
+  Hand theHand;
+  
+  Queue queue;
+  
   //the spoon picture in JRE System Library
   ImageIcon spoonPic = new ImageIcon("photo.jpg"); 
   
@@ -42,9 +42,13 @@ public class PlayerGui extends JFrame {
     frame.setTitle("Spoons");
     frame.setSize(700,470);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
   }
-  private final ButtonGroup buttonGroup = new ButtonGroup();
   public PlayerGui() {
+	  theHand = new Hand();
+	  queue = new Queue();
+	  player = new Player("127.0.0.1");
+	  
     
     JPanel cardPanel = new JPanel();
     
@@ -131,7 +135,7 @@ public class PlayerGui extends JFrame {
     //CARD1
     card1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e){
-        card1.setText("ace ♠");
+        player.sendMessage(card1.getText());
       }
     });
     card1.setPreferredSize(new Dimension(125, 200));
@@ -143,7 +147,7 @@ public class PlayerGui extends JFrame {
     //CARD2
     card2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-      card2.setText("ace ♥");
+      player.sendMessage(card2.getText());
       }
     });
     card2.setPreferredSize(new Dimension(125, 200));
@@ -154,7 +158,7 @@ public class PlayerGui extends JFrame {
     //CARD3
     card3.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        card3.setText("ace ♣");
+        player.sendMessage(card3.getText());
       }
     });
     card3.setPreferredSize(new Dimension(125, 200));
@@ -165,7 +169,7 @@ public class PlayerGui extends JFrame {
     //CARD4
     card4.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        card4.setText("ace ♦");
+        player.sendMessage(card4.getText());
       }
     });
     card4.setPreferredSize(new Dimension(125, 200));
@@ -176,7 +180,11 @@ public class PlayerGui extends JFrame {
     //CARD5
     card5.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        card5.setText("2 ♦");
+    	Card c5 = theHand.getCard(5);
+    	  
+        player.sendMessage(card5.getText());
+        queue.removeCard();
+        card5.setText(Queue[head]);
       }
     });
     card5.setPreferredSize(new Dimension(125, 200));
@@ -184,9 +192,5 @@ public class PlayerGui extends JFrame {
     card5.setMaximumSize(new Dimension(100, 400));
     cardPanel.add(card5);
     getContentPane().setLayout(groupLayout);
-  }
-
-  private class HandleButtons {
-
   }
 }
