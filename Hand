@@ -1,0 +1,28 @@
+public class Hand {
+Card Card1 = null;
+Card Card2 = null;
+Card Card3 = null;
+Card Card4 = null;
+Card Card5 = null;
+
+
+
+public void setCard(int c,Card card){
+	if(c == 5){
+		Card5 = card; 
+	
+	}
+	else if(c == 4){
+		
+	}
+}
+		
+public Card getCard(int i) {
+	if(i == 5){
+		return Card5;
+	}
+	return null;
+}
+
+
+	}
