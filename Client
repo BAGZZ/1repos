@@ -4,13 +4,15 @@ import java.net.Socket;
 
 public class Client implements Runnable {
 	private Socket skt;
+	private DeckOfCards deck;
 	private BufferedReader bReader;
 	private BufferedWriter bWriter;
 	
 	
 	
-	public Client(Socket skt){
+	public Client(Socket skt, DeckOfCards d){
 		this.skt = skt;
+		deck = d;
 		
 		try
 		{
@@ -33,10 +35,17 @@ public class Client implements Runnable {
 		
 			try
 			{
-				if(skt.getInputStream().available() > 0){
+				int temp = skt.getInputStream().available();
+				if(temp > 0){
 					//read in line
 					String line = bReader.readLine();
 					System.out.println(line);
+					if(line.equals("rCard")){
+						Card sendCard = deck.getCard();
+						
+						sendMessage(sendCard.toString());
+					}
+					
 				}
 			}
 			catch(IOException ioe){
