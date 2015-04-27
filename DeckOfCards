@@ -15,10 +15,6 @@ public class DeckOfCards{
 			cards[i + 26] = new Card(i + 1, Card.CLUBS);
 			cards[i + 39] = new Card(i + 1, Card.SPADES);
 			
-		}
-		/*for(int s=0; s<52; s++){
-			System.out.print(cards[s]);
-		}*/
 	}
 	//shuffle
 	public void shuffle(){
