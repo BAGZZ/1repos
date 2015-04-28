@@ -1,28 +1,50 @@
+
 public class Hand {
-Card Card1 = null;
-Card Card2 = null;
-Card Card3 = null;
-Card Card4 = null;
-Card Card5 = null;
+	Card Card1 = null;
+	Card Card2 = null;
+	Card Card3 = null;
+	Card Card4 = null;
+	Card Card5 = null;
 
 
 
-public void setCard(int c,Card card){
-	if(c == 5){
-		Card5 = card; 
-	
-	}
-	else if(c == 4){
+	public void setCard(int c,Card card){
+		if(c == 5){
+			Card5 = card; 
 		
+		}
+		else if(c == 4){
+			Card4 = card;
+		}
+		else if(c == 3){
+			Card3 = card;
+		}
+		else if(c == 2){
+			Card2 = card;
+		}
+		else if(c == 1){
+			Card1 = card;
+		}
 	}
-}
-		
-public Card getCard(int i) {
-	if(i == 5){
-		return Card5;
+			
+	public Card getCard(int i) {
+		if(i == 5){
+			return Card5;
+		}
+		else if(i == 4){
+			return Card4;
+		}
+		else if(i == 3){
+			return Card3;
+		}
+		else if(i == 2){
+			return Card2;
+		}
+		else if(i == 1){
+			return Card1;
+		}
+		return null;
 	}
-	return null;
-}
 
 
-	}
+}
