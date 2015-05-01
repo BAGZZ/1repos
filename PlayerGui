@@ -12,185 +12,240 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-
 public class PlayerGui extends JFrame {
-  //the 5 cards displayed as buttons
-  JButton card1 = new JButton("Card 1");
-  JButton card2 = new JButton("Card 2");
-  JButton card3 = new JButton("Card 3");
-  JButton card4 = new JButton("Card 4");
-  JButton card5 = new JButton("Card 5");
-  
-  //our 4 spoons displayed as buttons
-  JButton spoon1 = new JButton("");
-  JButton spoon2 = new JButton("");
-  JButton spoon3 = new JButton("");
-  JButton spoon4 = new JButton("");
-  
-  Player player;
-  
-  Hand theHand;
-  
-  Queue queue;
-  
-  //the spoon picture in JRE System Library
-  ImageIcon spoonPic = new ImageIcon("photo.jpg"); 
-  
-  public static void main(String[] args) {
-	PlayerGui frame = new PlayerGui();
-    frame.setVisible(true);
-    frame.setTitle("Spoons");
-    frame.setSize(700,470);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
-  }
-  public PlayerGui() {
-	  theHand = new Hand();
-	  queue = new Queue();
-	  player = new Player("127.0.0.1");
+	
+	//the 5 cards displayed as buttons
+	  JButton card1 = new JButton("Card 1");
+	  JButton card2 = new JButton("Card 2");
+	  JButton card3 = new JButton("Card 3");
+	  JButton card4 = new JButton("Card 4");
+	  JButton card5 = new JButton("Card 5");
 	  
-    
-    JPanel cardPanel = new JPanel();
-    
-    JPanel spoonPanel = new JPanel();
-    
-    JPanel panel_2 = new JPanel();
-    
-    JPanel panel_3 = new JPanel();
-    GroupLayout groupLayout = new GroupLayout(getContentPane());
-    groupLayout.setHorizontalGroup(
-      groupLayout.createParallelGroup(Alignment.LEADING)
-        .addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-        .addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-        .addGroup(groupLayout.createSequentialGroup()
-          .addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-          .addContainerGap())
-        .addComponent(cardPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-    );
-    groupLayout.setVerticalGroup(
-      groupLayout.createParallelGroup(Alignment.LEADING)
-        .addGroup(groupLayout.createSequentialGroup()
-          .addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-          .addPreferredGap(ComponentPlacement.RELATED)
-          .addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-          .addGap(33)
-          .addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-          .addPreferredGap(ComponentPlacement.RELATED)
-          .addComponent(cardPanel, GroupLayout.PREFERRED_SIZE, 217, Short.MAX_VALUE)
-          .addGap(3))
-    );
-    
-    JLabel lblClickOnThe = new JLabel("Click On The Card You Wish To Discard");
-    lblClickOnThe.setHorizontalAlignment(SwingConstants.CENTER);
-    lblClickOnThe.setHorizontalTextPosition(SwingConstants.CENTER);
-    panel_3.add(lblClickOnThe);
-    
-    JLabel lblClickASpoon = new JLabel("Click A Spoon When You Have A Four Of A Kind");
-    panel_2.add(lblClickASpoon);
-    
-    //SPOON1
-    spoon1.setIcon(spoonPic);
-    spoon1.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-      }
-    });
-    spoon1.setPreferredSize(new Dimension(125, 60));
-    spoon1.setHorizontalTextPosition(SwingConstants.CENTER);
-    spoon1.setAlignmentX(0.5f);
-    spoonPanel.add(spoon1);
-    
-    //SPOON2
-    spoon2.setIcon(spoonPic);
-    spoon2.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-      }
-    });
-    spoon2.setPreferredSize(new Dimension(125, 60));
-    spoon2.setHorizontalTextPosition(SwingConstants.CENTER);
-    spoon2.setAlignmentX(0.5f);
-    spoonPanel.add(spoon2);
-    
-    //SPOON3
-    spoon3.setIcon(spoonPic);
-    spoon3.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-      }
-    });
-    spoon3.setPreferredSize(new Dimension(125, 60));
-    spoon3.setHorizontalTextPosition(SwingConstants.CENTER);
-    spoon3.setAlignmentX(0.5f);
-    spoonPanel.add(spoon3);
-    
-    //SPOON4
-    spoon4.setIcon(spoonPic);
-    spoon4.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-      }
-    });
-    spoon4.setAlignmentX(Component.CENTER_ALIGNMENT);
-    spoon4.setHorizontalTextPosition(SwingConstants.CENTER);
-    spoon4.setPreferredSize(new Dimension(125, 60));
-    spoonPanel.add(spoon4);
-    
-    //CARD1
-    card1.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e){
-        player.sendMessage(card1.getText());
-      }
-    });
-    card1.setPreferredSize(new Dimension(125, 200));
-    card1.setMinimumSize(new Dimension(100, 400));
-    card1.setMaximumSize(new Dimension(100, 400));
-    cardPanel.add(card1);
-    
-    
-    //CARD2
-    card2.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-      player.sendMessage(card2.getText());
-      }
-    });
-    card2.setPreferredSize(new Dimension(125, 200));
-    card2.setMinimumSize(new Dimension(100, 400));
-    card2.setMaximumSize(new Dimension(100, 400));
-    cardPanel.add(card2);
-    
-    //CARD3
-    card3.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        player.sendMessage(card3.getText());
-      }
-    });
-    card3.setPreferredSize(new Dimension(125, 200));
-    card3.setMinimumSize(new Dimension(100, 400));
-    card3.setMaximumSize(new Dimension(100, 400));
-    cardPanel.add(card3);
-    
-    //CARD4
-    card4.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        player.sendMessage(card4.getText());
-      }
-    });
-    card4.setPreferredSize(new Dimension(125, 200));
-    card4.setMinimumSize(new Dimension(100, 400));
-    card4.setMaximumSize(new Dimension(100, 400));
-    cardPanel.add(card4);
-    
-    //CARD5
-    card5.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-    	Card c5 = theHand.getCard(5);
-    	  
-        player.sendMessage(card5.getText());
-        queue.removeCard();
-        card5.setText(Queue[head]);
-      }
-    });
-    card5.setPreferredSize(new Dimension(125, 200));
-    card5.setMinimumSize(new Dimension(100, 400));
-    card5.setMaximumSize(new Dimension(100, 400));
-    cardPanel.add(card5);
-    getContentPane().setLayout(groupLayout);
-  }
-}
+	  //our 4 spoons displayed as buttons
+	  JButton spoon1 = new JButton("");
+	  JButton spoon2 = new JButton("");
+	  JButton spoon3 = new JButton("");
+	  JButton spoon4 = new JButton("");
+	  
+	  Player player;
+	  
+	  Hand theHand;
+	  
+	  Queue queue;
+	  
+	  //the spoon picture in JRE System Library
+	  ImageIcon spoonPic = new ImageIcon("photo.jpg"); 
+	  
+	  public static void main(String[] args) {
+		PlayerGui frame = new PlayerGui();
+	    frame.setVisible(true);
+	    frame.setTitle("Spoons");
+	    frame.setSize(700,470);
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    
+	  }
+	  public PlayerGui() {
+		  theHand = new Hand();
+		  queue = new Queue();
+		  player = new Player("127.0.0.1", queue);
+		  
+	    for(int i = 1; i<6; i++){
+	    	if(!queue.isEmpty()){
+	    		if(theHand.getCard(i)==null){
+	    			theHand.setCard(i,queue.removeCard());
+	    		}
+	    	}
+	    }
+	    
+	    JPanel cardPanel = new JPanel();
+	    
+	    JPanel spoonPanel = new JPanel();
+	    
+	    JPanel panel_2 = new JPanel();
+	    
+	    JPanel panel_3 = new JPanel();
+	    GroupLayout groupLayout = new GroupLayout(getContentPane());
+	    groupLayout.setHorizontalGroup(
+	      groupLayout.createParallelGroup(Alignment.LEADING)
+	        .addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+	        .addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+	        .addGroup(groupLayout.createSequentialGroup()
+	          .addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+	          .addContainerGap())
+	        .addComponent(cardPanel, GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+	    );
+	    groupLayout.setVerticalGroup(
+	      groupLayout.createParallelGroup(Alignment.LEADING)
+	        .addGroup(groupLayout.createSequentialGroup()
+	          .addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+	          .addPreferredGap(ComponentPlacement.RELATED)
+	          .addComponent(spoonPanel, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+	          .addGap(33)
+	          .addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+	          .addPreferredGap(ComponentPlacement.RELATED)
+	          .addComponent(cardPanel, GroupLayout.PREFERRED_SIZE, 217, Short.MAX_VALUE)
+	          .addGap(3))
+	    );
+	    
+	    JLabel lblClickOnThe = new JLabel("Click On The Card You Wish To Discard");
+	    lblClickOnThe.setHorizontalAlignment(SwingConstants.CENTER);
+	    lblClickOnThe.setHorizontalTextPosition(SwingConstants.CENTER);
+	    panel_3.add(lblClickOnThe);
+	    
+	    JLabel lblClickASpoon = new JLabel("Click A Spoon When You Have A Four Of A Kind");
+	    panel_2.add(lblClickASpoon);
+	    
+	    //SPOON1
+	    spoon1.setIcon(spoonPic);
+	    spoon1.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	      }
+	    });
+	    spoon1.setPreferredSize(new Dimension(125, 60));
+	    spoon1.setHorizontalTextPosition(SwingConstants.CENTER);
+	    spoon1.setAlignmentX(0.5f);
+	    spoonPanel.add(spoon1);
+	    
+	    //SPOON2
+	    spoon2.setIcon(spoonPic);
+	    spoon2.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	      }
+	    });
+	    spoon2.setPreferredSize(new Dimension(125, 60));
+	    spoon2.setHorizontalTextPosition(SwingConstants.CENTER);
+	    spoon2.setAlignmentX(0.5f);
+	    spoonPanel.add(spoon2);
+	    
+	    //SPOON3
+	    spoon3.setIcon(spoonPic);
+	    spoon3.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	      }
+	    });
+	    spoon3.setPreferredSize(new Dimension(125, 60));
+	    spoon3.setHorizontalTextPosition(SwingConstants.CENTER);
+	    spoon3.setAlignmentX(0.5f);
+	    spoonPanel.add(spoon3);
+	    
+	    //SPOON4
+	    spoon4.setIcon(spoonPic);
+	    spoon4.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	      }
+	    });
+	    spoon4.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    spoon4.setHorizontalTextPosition(SwingConstants.CENTER);
+	    spoon4.setPreferredSize(new Dimension(125, 60));
+	    spoonPanel.add(spoon4);
+	    
+	    //CARD1
+	    card1.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e){
+	    	  if(!queue.isEmpty()){
+		    	    Card c1 = theHand.getCard(1);
+			        player.sendMessage(card1.getText());
+			        Card temp = queue.removeCard();
+			        theHand.setCard(1, temp);
+			        card1.setText(theHand.getCard(1).toString());
+	    	}
+	    	  else{
+	    		  System.out.print(" Wait till you have more cards please ");
+	    	  }
+	      }
+	    });
+	    card1.setPreferredSize(new Dimension(125, 200));
+	    card1.setMinimumSize(new Dimension(100, 400));
+	    card1.setMaximumSize(new Dimension(100, 400));
+	    card1.setText(theHand.getCard(1).toString());
+	    cardPanel.add(card1);
+	    
+	    
+	    //CARD2
+	    card2.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	    	  if(!queue.isEmpty()){
+	    	  Card c2 = theHand.getCard(2);
+		        player.sendMessage(card2.getText());
+		        Card temp = queue.removeCard();
+		        theHand.setCard(2, temp);
+		        card2.setText(theHand.getCard(2).toString());
+	      }
+    	  else{
+    		  System.out.print(" Wait till you have more cards please ");
+    	  }
+	      }
+	    });
+	    card2.setPreferredSize(new Dimension(125, 200));
+	    card2.setMinimumSize(new Dimension(100, 400));
+	    card2.setMaximumSize(new Dimension(100, 400));
+	    card2.setText(theHand.getCard(2).toString());
+	    cardPanel.add(card2);
+	    
+	    //CARD3
+	    card3.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	    	  if(!queue.isEmpty()){
+	      
+	    	  Card c3 = theHand.getCard(3);
+		        player.sendMessage(card3.getText());
+		        Card temp = queue.removeCard();
+		        theHand.setCard(3, temp);
+		        card3.setText(theHand.getCard(3).toString());
+	      }
+    	  else{
+    		  System.out.print(" Wait till you have more cards please ");
+    	  }
+	    }
+	    });
+	    card3.setPreferredSize(new Dimension(125, 200));
+	    card3.setMinimumSize(new Dimension(100, 400));
+	    card3.setMaximumSize(new Dimension(100, 400));
+	    card3.setText(theHand.getCard(3).toString());
+	    cardPanel.add(card3);
+	    
+	    //CARD4
+	    card4.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	    	  if(!queue.isEmpty()){
+	      
+	    	  Card c4 = theHand.getCard(4);
+		        player.sendMessage(card4.getText());
+		        Card temp = queue.removeCard();
+		        theHand.setCard(4, temp);
+		        card4.setText(theHand.getCard(4).toString());
+	      }
+	      else{
+  		  System.out.print(" Wait till you have more cards please ");
+	      }
+	    }
+	    });
+	    card4.setPreferredSize(new Dimension(125, 200));
+	    card4.setMinimumSize(new Dimension(100, 400));
+	    card4.setMaximumSize(new Dimension(100, 400));
+	    card4.setText(theHand.getCard(4).toString());
+	    cardPanel.add(card4);
+	    
+	    //CARD5
+	    card5.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	    	  if(!queue.isEmpty()){
+	    	Card c5 = theHand.getCard(5);
+	        player.sendMessage(card5.getText());
+	        Card temp = queue.removeCard();
+	        theHand.setCard(5, temp);
+	        card5.setText(theHand.getCard(5).toString());
+	      }
+	    	else{
+  		  System.out.print(" Wait till you have more cards please ");
+  	  		}
+	    }
+	    });
+	    card5.setPreferredSize(new Dimension(125, 200));
+	    card5.setMinimumSize(new Dimension(100, 400));
+	    card5.setMaximumSize(new Dimension(100, 400));
+	    card5.setText(theHand.getCard(5).toString());
+	    cardPanel.add(card5);
+	    getContentPane().setLayout(groupLayout);
+	  }
+	}
