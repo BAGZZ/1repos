@@ -1,5 +1,6 @@
+
 public class Queue {
-	
+
 	public static void main(String[] args){
 		Card a = new Card(3,1);
 		Card b = new Card(4,1);
@@ -35,5 +36,8 @@ Card[] bufferedQueue = new Card[30];
 		int tempHead = head;
 		head=(++head)%bufferedQueue.length;
 		return bufferedQueue[tempHead];
+	}
+	public boolean isEmpty(){
+		return head==tail;
 	}
 }
