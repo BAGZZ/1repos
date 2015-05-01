@@ -31,6 +31,25 @@ public class Card {
         this.rank = rank;
         this.suit = suit;
     }
+    
+    public Card(String s) {
+    	String[] t = s.split(" ");
+    	int rank=-1, suit =-1;
+    	for(int i =1; i<14; i++){
+    		if(rankToString(i).equals(t[0])){
+    			rank=i;
+    		}
+    	}
+    	for(int i=1; i<5; i++){
+    		if(suitToString(i).equals(t[1])){
+    			suit=i;
+    		}
+    	}
+    	assert isValidRank(rank);
+        assert isValidSuit(suit);
+    	this.rank=rank;
+    	this.suit=suit;
+    }
 
     public int getSuit() {
         return suit;
@@ -77,9 +96,7 @@ public class Card {
         case KING:
             return "King";
         default:
-            //Handle an illegal argument.  There are generally two
-            //ways to handle invalid arguments, throwing an exception
-            //(see the section on Handling Exceptions) or return null
+            
             return null;
         }    
     }
