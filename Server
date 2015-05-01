@@ -4,14 +4,23 @@ import java.net.Socket;
 
 
 public class Server implements Runnable {	
-	public static void main(String[] args){
-		DeckOfCards deck = new DeckOfCards();
+	DeckOfCards deck = new DeckOfCards();
+	Client[] clientList = new Client[5];
+	int clientDex = 0;
+	
+	public Server() {
+		super();
 		deck.shuffle();
+
+		
+	}
+
+	public static void main(String[] args){
 		new Thread (new Server()).start();
 	}
 
 	@Override
-	public void run() {
+	public void run() {https://github.com/BAGZZ/1repos/commits/master
 		// TODO Auto-generated method stub
 		try{
 			int port = 6000;
@@ -26,7 +35,10 @@ public class Server implements Runnable {
 				//send cards
 				
 				System.out.println("Server Accepted Connection from " + socket.getInetAddress().toString());
-				new Client(socket,deck);				
+				clientList[clientDex] = new Client(socket,deck);	
+				clientDex++;
+				
+				
 			}	
 		}
 		catch(IOException ioe){
