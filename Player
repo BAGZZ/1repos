@@ -5,9 +5,11 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 
-public class Player {
+public class Player implements Runnable {
 	BufferedWriter out;	
 	public Socket ps;
+	private Queue queue;
+	private BufferedReader in;
 	public static final int PORT = 6000;
 	
 	public static void main(String[] args){
@@ -31,24 +33,52 @@ public class Player {
 //		}
 	}
 	
+	public void run(){
+		
+	
+	}
+	
 	public Player(String address,Queue q)
 	{
 		try{
 			ps = new Socket("127.0.0.1",PORT);
 //			Thread.sleep(200);
-			out = new BufferedWriter(new OutputStreamWriter(ps.getOutputStream()));
-//			out.write();
+			out = new BufferedWriter(new OutputStreamWriter(ps.getOutputStream()));			
+			in = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+			//out.write();
 			out.flush();
-			
+			queue = q;
+			for(int i=0; i<10; i++){
+				sendMessage("rCard");
+				Thread.sleep(200);
+				receiveCard();
+			}
 //			Thread.sleep(5000);
 		}
 		catch(IOException ioe){
 			System.err.println(ioe.getMessage());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(" Error. Interrupted. ");
 		}
 		
 		
 	}
-	
+	public Card receiveCard(){
+		try{
+			String s = in.readLine();
+			Card c = new Card(s);
+			queue.addCard(c);
+			
+		}
+		catch(IOException ioe)
+		{
+			System.err.println(ioe.getMessage());
+		}
+		
+		return null;
+	}
 	public void sendMessage(String message)
 	{
 		try
