@@ -2,13 +2,12 @@ import java.io.*;
 import java.net.Socket;
 
 
-
-
 public class Client implements Runnable {
 	private Socket skt;
 	private DeckOfCards deck;
 	private BufferedReader bReader;
 	private BufferedWriter bWriter;
+	private Client nextPlayer;
 	
 	
 	
@@ -47,6 +46,12 @@ public class Client implements Runnable {
 						Card sendCard = deck.getCard();
 						sendMessage(sendCard.toString());
 					}
+					else if(line.contains("Card")){
+						nextPlayer.sendMessage(line);
+					}
+					//else if(){
+						
+					//}
 					
 				}
 			}
@@ -77,6 +82,11 @@ public class Client implements Runnable {
 		catch(IOException ioe){
 			//throw error crap
 		}
+	}
+
+	public void setNext(Client clientList) {
+		nextPlayer = clientList;
+		
 	}
 
 }
