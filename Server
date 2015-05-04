@@ -5,7 +5,7 @@ import java.net.Socket;
 
 public class Server implements Runnable {	
 	DeckOfCards deck = new DeckOfCards();
-	Client[] clientList = new Client[5];
+	Client[] clientList = new Client[2];
 	int clientDex = 0;
 	
 	public Server() {
@@ -28,7 +28,7 @@ public class Server implements Runnable {
 			System.out.println("Server is listening to port 6000");
 			
 			//server always running.
-			while(true){
+			while(clientDex < clientList.length){
 				System.out.println("Server Accepting Connections");
 				Socket socket;
 				socket = serverSocket.accept();
@@ -37,9 +37,15 @@ public class Server implements Runnable {
 				System.out.println("Server Accepted Connection from " + socket.getInetAddress().toString());
 				clientList[clientDex] = new Client(socket,deck);	
 				clientDex++;
-				
-				
 			}	
+			for(int i = 0; i<clientList.length; i++){
+				clientList[i].setNext(clientList[(i+1)%clientList.length]);
+			}
+			
+			while(true){
+			}
+				
+			
 		}
 		catch(IOException ioe){
 			System.err.println(ioe.getMessage());
