@@ -36,12 +36,12 @@ public class Card {
     	String[] t = s.split(" ");
     	int rank=-1, suit =-1;
     	for(int i =1; i<14; i++){
-    		if(rankToString(i).equals(t[0])){
+    		if(rankToString(i).equals(t[1])){
     			rank=i;
     		}
     	}
     	for(int i=1; i<5; i++){
-    		if(suitToString(i).equals(t[1])){
+    		if(suitToString(i).equals(t[2])){
     			suit=i;
     		}
     	}
@@ -116,7 +116,7 @@ public class Card {
         }    
     }
     public String toString(){
-    	return rankToString(getRank())+" "+suitToString(getSuit());
+    	return "Card "+rankToString(getRank())+" "+suitToString(getSuit());
     }
 
     public static void main(String[] args) {
