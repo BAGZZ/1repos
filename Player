@@ -5,6 +5,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 
+
 public class Player implements Runnable {
 	BufferedWriter out;	
 	public Socket ps;
@@ -34,8 +35,9 @@ public class Player implements Runnable {
 	}
 	
 	public void run(){
-		
-	
+		while(true){
+			receiveCard();
+		}
 	}
 	
 	public Player(String address,Queue q)
@@ -53,7 +55,7 @@ public class Player implements Runnable {
 				Thread.sleep(200);
 				receiveCard();
 			}
-//			Thread.sleep(5000);
+			new Thread(this).start();
 		}
 		catch(IOException ioe){
 			System.err.println(ioe.getMessage());
@@ -64,8 +66,10 @@ public class Player implements Runnable {
 		}
 		
 		
+		
+		
 	}
-	public Card receiveCard(){
+	public void receiveCard(){
 		try{
 			String s = in.readLine();
 			Card c = new Card(s);
@@ -77,7 +81,7 @@ public class Player implements Runnable {
 			System.err.println(ioe.getMessage());
 		}
 		
-		return null;
+		//return null;
 	}
 	public void sendMessage(String message)
 	{
