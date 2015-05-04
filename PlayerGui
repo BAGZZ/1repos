@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+
 public class PlayerGui extends JFrame {
 	
 	//the 5 cards displayed as buttons
@@ -150,7 +151,7 @@ public class PlayerGui extends JFrame {
 			        card1.setText(theHand.getCard(1).toString());
 	    	}
 	    	  else{
-	    		  System.out.print(" Wait till you have more cards please ");
+	    		  System.out.print(" Wait till you have more cards please \n");
 	    	  }
 	      }
 	    });
