@@ -56,7 +56,7 @@ public class PlayerGui extends JFrame {
 	    			theHand.setCard(i,queue.removeCard());
 	    		}
 	    	}
-	    }
+	    } 
 	    
 	    JPanel cardPanel = new JPanel();
 	    
@@ -98,8 +98,17 @@ public class PlayerGui extends JFrame {
 	    
 	    //SPOON1
 	    spoon1.setIcon(spoonPic);
-	    spoon1.addActionListener(new ActionListener() {
+	    spoon1.addActionListener(new ActionListener() {	    	
 	      public void actionPerformed(ActionEvent e) {
+	    	  boolean isWorking = theHand.hasFourOfAKind();
+	    	  System.out.println(isWorking);
+	    	  if(theHand.hasFourOfAKind()){
+	    		  System.out.print("pick up a spoon");
+	    		  player.sendMessage("Spoon 1");
+	    		  spoon1.setEnabled(false);
+	    	  }else{
+	    		  System.out.println(" Much like Zach you are a LOSER! unless someone else has a spoon, then you are not like ZaCHaRii");
+	    	  }
 	      }
 	    });
 	    spoon1.setPreferredSize(new Dimension(125, 60));
@@ -111,6 +120,13 @@ public class PlayerGui extends JFrame {
 	    spoon2.setIcon(spoonPic);
 	    spoon2.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
+	    	  if(theHand.hasFourOfAKind()){
+	    		  System.out.print("pick up a spoon");
+	    		  player.sendMessage("Spoon 2");
+	    		  spoon2.setEnabled(false);
+	    	  }else{
+	    		  System.out.println(" Much like Zach you are a LOSER! unless someone else has a spoon, then you are not like Zakarrii. ");
+	    	  }
 	      }
 	    });
 	    spoon2.setPreferredSize(new Dimension(125, 60));
@@ -122,6 +138,13 @@ public class PlayerGui extends JFrame {
 	    spoon3.setIcon(spoonPic);
 	    spoon3.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
+	    	  if(theHand.hasFourOfAKind()){
+	    		  System.out.print("pick up a spoon");
+	    		  player.sendMessage("Spoon 3");
+	    		  spoon3.setEnabled(false);
+	    	  }else{
+	    		  System.out.println(" Much like Zach you are a LOSER! unless someone else has a spoon, then you are not like lady bagss husband");
+	    	  }
 	      }
 	    });
 	    spoon3.setPreferredSize(new Dimension(125, 60));
@@ -133,6 +156,13 @@ public class PlayerGui extends JFrame {
 	    spoon4.setIcon(spoonPic);
 	    spoon4.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
+	    	  if(theHand.hasFourOfAKind()){
+	    		  System.out.print("pick up a spoon");
+	    		  player.sendMessage("Spoon 4");
+	    		  spoon4.setEnabled(false);
+	    	  }else{
+	    		  System.out.println(" Much like Zach you are a LOSER! unless someone else has a spoon, then you are not like BAGGELS");
+	    	  }
 	      }
 	    });
 	    spoon4.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -144,11 +174,11 @@ public class PlayerGui extends JFrame {
 	    card1.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e){
 	    	  if(!queue.isEmpty()){
+	    		  player.sendMessage("Card "+card1.getText());
 		    	    Card c1 = theHand.getCard(1);
-			        player.sendMessage(card1.getText());
 			        Card temp = queue.removeCard();
 			        theHand.setCard(1, temp);
-			        card1.setText(theHand.getCard(1).toString());
+			        card1.setText(theHand.getCard(1).toString().substring(5));
 	    	}
 	    	  else{
 	    		  System.out.print(" Wait till you have more cards please \n");
@@ -158,7 +188,7 @@ public class PlayerGui extends JFrame {
 	    card1.setPreferredSize(new Dimension(125, 200));
 	    card1.setMinimumSize(new Dimension(100, 400));
 	    card1.setMaximumSize(new Dimension(100, 400));
-	    card1.setText(theHand.getCard(1).toString());
+	    card1.setText(theHand.getCard(1).toString().substring(5));
 	    cardPanel.add(card1);
 	    
 	    
@@ -166,87 +196,207 @@ public class PlayerGui extends JFrame {
 	    card2.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
 	    	  if(!queue.isEmpty()){
+	    		  player.sendMessage("Card "+card2.getText());
 	    	  Card c2 = theHand.getCard(2);
-		        player.sendMessage(card2.getText());
+		        
 		        Card temp = queue.removeCard();
 		        theHand.setCard(2, temp);
-		        card2.setText(theHand.getCard(2).toString());
+		        card2.setText(theHand.getCard(2).toString().substring(5));
 	      }
     	  else{
-    		  System.out.print(" Wait till you have more cards please ");
+    		  System.out.print(" Wait till you have more cards please \n");
     	  }
 	      }
 	    });
 	    card2.setPreferredSize(new Dimension(125, 200));
 	    card2.setMinimumSize(new Dimension(100, 400));
 	    card2.setMaximumSize(new Dimension(100, 400));
-	    card2.setText(theHand.getCard(2).toString());
+	    card2.setText(theHand.getCard(2).toString().substring(5));
 	    cardPanel.add(card2);
 	    
 	    //CARD3
 	    card3.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
 	    	  if(!queue.isEmpty()){
-	      
+	      player.sendMessage("Card "+card3.getText());
 	    	  Card c3 = theHand.getCard(3);
-		        player.sendMessage(card3.getText());
+		        
 		        Card temp = queue.removeCard();
 		        theHand.setCard(3, temp);
-		        card3.setText(theHand.getCard(3).toString());
+		        card3.setText(theHand.getCard(3).toString().substring(5));
 	      }
     	  else{
-    		  System.out.print(" Wait till you have more cards please ");
+    		  System.out.print(" Wait till you have more cards please \n");
     	  }
 	    }
 	    });
 	    card3.setPreferredSize(new Dimension(125, 200));
 	    card3.setMinimumSize(new Dimension(100, 400));
 	    card3.setMaximumSize(new Dimension(100, 400));
-	    card3.setText(theHand.getCard(3).toString());
+	    card3.setText(theHand.getCard(3).toString().substring(5));
 	    cardPanel.add(card3);
 	    
 	    //CARD4
 	    card4.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
 	    	  if(!queue.isEmpty()){
-	      
+	      player.sendMessage("Card "+card4.getText());
 	    	  Card c4 = theHand.getCard(4);
-		        player.sendMessage(card4.getText());
+		        
 		        Card temp = queue.removeCard();
 		        theHand.setCard(4, temp);
-		        card4.setText(theHand.getCard(4).toString());
+		        card4.setText(theHand.getCard(4).toString().substring(5));
 	      }
 	      else{
-  		  System.out.print(" Wait till you have more cards please ");
+  		  System.out.print(" Wait till you have more cards please \n");
 	      }
 	    }
 	    });
 	    card4.setPreferredSize(new Dimension(125, 200));
 	    card4.setMinimumSize(new Dimension(100, 400));
 	    card4.setMaximumSize(new Dimension(100, 400));
-	    card4.setText(theHand.getCard(4).toString());
+	    card4.setText(theHand.getCard(4).toString().substring(5));
 	    cardPanel.add(card4);
 	    
-	    //CARD5
+    	    //CARD5
 	    card5.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
 	    	  if(!queue.isEmpty()){
-	    	Card c5 = theHand.getCard(5);
-	        player.sendMessage(card5.getText());
-	        Card temp = queue.removeCard();
-	        theHand.setCard(5, temp);
-	        card5.setText(theHand.getCard(5).toString());
-	      }
+	    		player.sendMessage("Card "+card5.getText());
+		    	Card c5 = theHand.getCard(5);
+		        
+		        Card temp = queue.removeCard();
+		        theHand.setCard(5, temp);
+		        card5.setText(theHand.getCard(5).toString().substring(5));
+		      }
 	    	else{
-  		  System.out.print(" Wait till you have more cards please ");
+  		  System.out.print(" Wait till you have more cards please \n");
   	  		}
 	    }
 	    });
 	    card5.setPreferredSize(new Dimension(125, 200));
 	    card5.setMinimumSize(new Dimension(100, 400));
 	    card5.setMaximumSize(new Dimension(100, 400));
-	    card5.setText(theHand.getCard(5).toString());
+	    card5.setText(theHand.getCard(5).toString().substring(5));
 	    cardPanel.add(card5);
 	    getContentPane().setLayout(groupLayout);
 	  }
+	  
+/*	  private class Player implements Runnable {
+			BufferedWriter out;	
+			public Socket ps;
+			private Queue queue;
+			private BufferedReader in;
+			public static final int PORT = 6000;
+			
+			public void run(){
+				
+				while(true){
+					
+					String s;
+					try {
+						s = in.readLine();
+					
+						if(s.contains("Card")){
+							receiveCard(s);
+						}
+						else if(s.contains("Spoon")){
+							
+						}
+						
+						
+					
+					
+					
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+			}
+			
+			public Player(String address,Queue q)
+			{
+				String s;
+				try{
+					ps = new Socket("127.0.0.1",PORT);
+//					Thread.sleep(200);
+					out = new BufferedWriter(new OutputStreamWriter(ps.getOutputStream()));			
+					in = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+					//out.write();
+					out.flush();
+					queue = q;
+					for(int i=0; i<10; i++){
+						sendMessage("rCard");
+						Thread.sleep(200);
+						try {
+							s = in.readLine();
+							if(s.contains("Card")){
+								receiveCard(s);
+							}
+					}catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					new Thread(this).start();
+				}
+				}
+				catch(IOException ioe){
+					System.err.println(ioe.getMessage());
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println(" Error. Interrupted. ");
+				}
+				
+				
+				
+				
+			}
+			public void receiveCard(String s){
+			
+					Card c = new Card(s);
+					queue.addCard(c);
+									
+			}
+			public void receiveSpoon(String s){
+				String[] t = s.split(" ");
+				int temp = Integer.parseInt(t[1]);
+				if(temp==1){
+					if(spoon1.isEnabled()){
+						player.sendMessage("Spoon 1");
+						spoon1.setEnabled(false);
+					}
+				}else if(temp==2){
+					if(spoon2.isEnabled()){
+						player.sendMessage("Spoon 2");
+						spoon2.setEnabled(false);
+					}
+				}else if(temp==3){
+					if(spoon3.isEnabled()){
+						player.sendMessage("Spoon 3");
+						spoon3.setEnabled(false);
+					}
+				}else if(temp==4){
+					if(spoon4.isEnabled()){
+						player.sendMessage("Spoon 4");
+						spoon4.setEnabled(false);
+					}
+				}
+			}
+			public void sendMessage(String message)
+			{
+				try
+				{
+					out.write(message);
+					out.newLine();
+					out.flush();
+				}
+				catch(IOException ioe)
+				{
+					System.err.println(ioe.getMessage());
+				}
+			}
+		}  */ 
 	}
