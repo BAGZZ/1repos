@@ -7,7 +7,15 @@ public class Hand {
 	Card Card4 = null;
 	Card Card5 = null;
 
-
+	public boolean hasFourOfAKind(){
+		boolean output=false;
+		output= output || (Card1.compareTo(Card2)==0 && Card1.compareTo(Card3)==0 && Card1.compareTo(Card4)==0);
+		output= output || (Card2.compareTo(Card5)==0 && Card2.compareTo(Card3)==0 && Card2.compareTo(Card4)==0);
+		output= output || (Card3.compareTo(Card1)==0 && Card3.compareTo(Card5)==0 && Card3.compareTo(Card4)==0);
+		output= output || (Card4.compareTo(Card2)==0 && Card4.compareTo(Card5)==0 && Card4.compareTo(Card1)==0);
+		output= output || (Card5.compareTo(Card2)==0 && Card5.compareTo(Card3)==0 && Card5.compareTo(Card1)==0);
+		return output;
+	}
 
 	public void setCard(int c,Card card){
 		if(c == 5){
