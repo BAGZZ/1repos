@@ -1,6 +1,6 @@
 package SpoonsProj;
 
-public class Card {
+public class Card implements Comparable<Card>{
     private final int rank;
     private final int suit;
 
@@ -143,4 +143,18 @@ public class Card {
         assert suitToString(SPADES) == "Spades";
 
     }
+
+	@SuppressWarnings("null")
+	@Override
+	public int compareTo(Card o) {
+		if(this.rank>o.rank){
+			return 1;
+		}else if(this.rank==o.rank){
+			return 0;
+		}else if(this.rank<o.rank){
+			return -1;
+		}else{
+			return (Integer) null;
+		}
+	}
 }
