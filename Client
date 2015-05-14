@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.Socket;
 
 
+
 public class Client implements Runnable {
 	private Socket skt;
 	private DeckOfCards deck;
