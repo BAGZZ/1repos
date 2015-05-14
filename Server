@@ -3,9 +3,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
+
 public class Server implements Runnable {	
 	DeckOfCards deck = new DeckOfCards();
-	Client[] clientList = new Client[2];
+	Client[] clientList = new Client[5];
 	int clientDex = 0;
 	
 	public Server() {
